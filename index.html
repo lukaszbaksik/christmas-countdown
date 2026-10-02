@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Countdown to Christmas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ec;
+    --ink: #2b2b2a;
+    --muted: #8c8a84;
+    --green: #2f5d46;
+    --star: #c9b37a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1d1b; --ink: #ece8e0; --muted: #8f8d86; --green: #5f9a7a; --star: #d6c28a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1d1b; --ink: #ece8e0; --muted: #8f8d86; --green: #5f9a7a; --star: #d6c28a;
+  }
+  .tree g { fill: var(--green); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Jost", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  main {
+    text-align: center;
+    padding: 24px;
+    z-index: 1;
+  }
+  .tree { width: 64px; height: auto; margin-bottom: 40px; }
+  h1 {
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 56px;
+  }
+  .counter {
+    display: flex;
+    gap: clamp(20px, 6vw, 64px);
+    justify-content: center;
+  }
+  .unit { min-width: 64px; }
+  .num {
+    display: block;
+    font-weight: 200;
+    font-size: clamp(44px, 10vw, 104px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    display: block;
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .line {
+    width: 32px; height: 1px;
+    background: var(--green);
+    margin: 56px auto 0;
+    opacity: .6;
+  }
+  .merry {
+    font-size: clamp(28px, 6vw, 56px);
+    font-weight: 200;
+    letter-spacing: 0.1em;
+  }
+  .tz { margin-top: 28px; position: relative; display: inline-block; }
+  .tz select {
+    appearance: none; -webkit-appearance: none;
+    background: transparent;
+    border: 0; border-bottom: 1px solid color-mix(in srgb, var(--muted) 45%, transparent);
+    border-radius: 0;
+    color: var(--muted);
+    font: inherit; font-size: 12px; font-weight: 300;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 6px 4px; text-align: center; text-align-last: center;
+    cursor: pointer; max-width: 80vw;
+    transition: color .2s, border-color .2s;
+  }
+  .tz select:hover, .tz select:focus { color: var(--ink); border-color: var(--green); outline: none; }
+  .tz select option { text-transform: none; letter-spacing: 0; color: #2b2b2a; background: #f4f1ec; }
+  .star {
+    position: absolute;
+    color: var(--star);
+    fill: currentColor;
+    opacity: .7;
+    animation: twinkle 5s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: .25; }
+    50% { opacity: .85; }
+  }
+  @media (prefers-reduced-motion: reduce) { .star { animation: none; } }
+  @media (max-width: 480px) {
+    .counter { gap: 14px; }
+    .unit { min-width: 0; }
+    .label { letter-spacing: 0.15em; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<svg class="star" style="top:12%;left:14%" width="14" height="14" viewBox="0 0 24 24"><path d="M12 0l2 10 10 2-10 2-2 10-2-10L0 12l10-2z"/></svg>
+<svg class="star" style="top:22%;right:18%;animation-delay:-1.5s" width="10" height="10" viewBox="0 0 24 24"><path d="M12 0l2 10 10 2-10 2-2 10-2-10L0 12l10-2z"/></svg>
+<svg class="star" style="bottom:18%;left:22%;animation-delay:-3s" width="9" height="9" viewBox="0 0 24 24"><path d="M12 0l2 10 10 2-10 2-2 10-2-10L0 12l10-2z"/></svg>
+<svg class="star" style="bottom:26%;right:12%;animation-delay:-2s" width="16" height="16" viewBox="0 0 24 24"><path d="M12 0l2 10 10 2-10 2-2 10-2-10L0 12l10-2z"/></svg>
+<svg class="star" style="top:8%;right:42%;animation-delay:-4s" width="8" height="8" viewBox="0 0 24 24"><path d="M12 0l2 10 10 2-10 2-2 10-2-10L0 12l10-2z"/></svg>
+
+<main>
+  <svg class="tree" viewBox="0 0 64 100" aria-hidden="true">
+    <g fill="#2f5d46">
+      <path d="M32 4 L48 34 H16 Z"/>
+      <path d="M32 24 L54 60 H10 Z"/>
+      <path d="M32 46 L60 86 H4 Z"/>
+      <rect x="29" y="86" width="6" height="10"/>
+    </g>
+  </svg>
+  <h1 id="title">Until Christmas</h1>
+  <div class="counter" id="counter">
+    <div class="unit"><span class="num" id="d">00</span><span class="label">Days</span></div>
+    <div class="unit"><span class="num" id="h">00</span><span class="label">Hours</span></div>
+    <div class="unit"><span class="num" id="m">00</span><span class="label">Minutes</span></div>
+    <div class="unit"><span class="num" id="s">00</span><span class="label">Seconds</span></div>
+  </div>
+  <div class="tz"><select id="tz" aria-label="Time zone"></select></div>
+</main>
+
+<script>
+  const pad = n => String(n).padStart(2, "0");
+  const $ = id => document.getElementById(id);
+  const sel = $("tz");
+
+  const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  let zones = [];
+  try { zones = Intl.supportedValuesOf("timeZone"); } catch (e) {}
+  if (!zones.length) zones = ["UTC", "Europe/Copenhagen", "Europe/London", "America/New_York", "America/Los_Angeles", "Asia/Tokyo", "Australia/Sydney"];
+  if (!zones.includes(localTz)) zones.unshift(localTz);
+
+  let tz = localTz;
+  try { const saved = localStorage.getItem("xmas-tz"); if (saved && zones.includes(saved)) tz = saved; } catch (e) {}
+
+  zones.forEach(z => {
+    const o = document.createElement("option");
+    o.value = z; o.textContent = z.replace(/_/g, " ").replace("/", " \u00b7 ");
+    sel.appendChild(o);
+  });
+  sel.value = tz;
+  sel.addEventListener("change", () => {
+    tz = sel.value;
+    try { localStorage.setItem("xmas-tz", tz); } catch (e) {}
+    tick();
+  });
+
+  // wall-clock parts of an instant in a time zone
+  function parts(ts, zone) {
+    const f = new Intl.DateTimeFormat("en-US", { timeZone: zone, hourCycle: "h23",
+      year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" });
+    const o = {};
+    f.formatToParts(new Date(ts)).forEach(p => o[p.type] = +p.value);
+    return o;
+  }
+  const offset = (ts, zone) => {
+    const p = parts(ts, zone);
+    return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - Math.floor(ts / 1000) * 1000;
+  };
+  // instant at which wall-clock y-m-d 00:00 occurs in the zone
+  function midnight(y, m, d, zone) {
+    const guess = Date.UTC(y, m, d);
+    let t = guess - offset(guess, zone);
+    t = guess - offset(t, zone);
+    return t;
+  }
+
+  function tick() {
+    const now = Date.now();
+    const p = parts(now, tz);
+    if (p.month === 12 && p.day === 25) {
+      $("title").textContent = "God jul";
+      $("counter").innerHTML = '<div class="merry">Merry Christmas</div>';
+      return;
+    }
+    $("title").textContent = "Until Christmas";
+    if (!$("d")) {
+      $("counter").innerHTML =
+        '<div class="unit"><span class="num" id="d"></span><span class="label">Days</span></div>' +
+        '<div class="unit"><span class="num" id="h"></span><span class="label">Hours</span></div>' +
+        '<div class="unit"><span class="num" id="m"></span><span class="label">Minutes</span></div>' +
+        '<div class="unit"><span class="num" id="s"></span><span class="label">Seconds</span></div>';
+    }
+    const year = p.month === 12 && p.day > 25 ? p.year + 1 : p.year;
+    let diff = Math.max(0, midnight(year, 11, 25, tz) - now);
+    const d = Math.floor(diff / 864e5); diff %= 864e5;
+    const h = Math.floor(diff / 36e5); diff %= 36e5;
+    const m = Math.floor(diff / 6e4);
+    const s = Math.floor((diff % 6e4) / 1e3);
+    $("d").textContent = d;
+    $("h").textContent = pad(h);
+    $("m").textContent = pad(m);
+    $("s").textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
